@@ -1,0 +1,60 @@
+#application: constant-wonder-789
+version: v1
+threadsafe: true
+
+runtime: go
+api_version: go1
+
+handlers:
+
+- url: /
+  static_files : web/index.html
+  upload: web/index.html
+
+- url: /apple-touch-icon-precomposed.png
+  static_files : web/apple-touch-icon-precomposed.png
+  upload: web/apple-touch-icon-precomposed.png
+- url: /favicon.ico
+  static_files : web/favicon.ico
+  upload: web/favicon.ico
+- url: /index.html
+  static_files : web/index.html
+  upload: web/index.html
+- url: /index.html_bootstrap.dart
+  static_files : web/index.html_bootstrap.dart
+  upload: web/index.html_bootstrap.dart
+- url: /index.html_bootstrap.dart.js
+  static_files : web/index.html_bootstrap.dart.js
+  upload: web/index.html_bootstrap.dart.js
+- url: /index.html_bootstrap.dart.js.map
+  static_files : web/index.html_bootstrap.dart.js.map
+  upload: web/index.html_bootstrap.dart.js.map
+- url: /index.html._data
+  static_files : web/index.html._data
+  upload: web/index.html._data
+- url: /index.html.0.dart
+  static_files : web/index.html.0.dart
+  upload: web/index.html.0.dart
+- url: /robots.txt
+  static_files : web/robots.txt
+  upload: web/robots.txt
+- url: /styles.css
+  static_files : web/styles.css
+  upload: web/styles.css
+
+
+# Handler for dart packages
+- url: /packages
+  static_dir: web/packages
+
+- url: /images
+  static_dir: web/images
+
+- url: /.*
+  script: _go_app
+
+# Important! Even though there's a catch all routing above,
+# without these two lines it's not going to work.
+# Make sure you have this:
+- url: /_ah/spi/.*
+  script: _go_app

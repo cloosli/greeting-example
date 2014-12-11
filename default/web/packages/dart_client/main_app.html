@@ -1,0 +1,55 @@
+<!--
+  Copyright (c) 2014, <Christian Loosli>. All rights reserved. Use of this source code
+  is governed by a BSD-style license that can be found in the LICENSE file.
+-->
+
+<!-- import polymer-element's definition -->
+<link rel="import" href="../../packages/polymer/polymer.html">
+
+<link rel="import" href="../../packages/paper_elements/paper_button.html">
+
+<polymer-element name="main-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+        margin: 20px 2%;
+      }
+      #wrapper {
+        margin: 20px;
+      }
+      #load-button {
+        background: blue;
+        color: white;
+      }
+      #greeting-card {
+        margin: 5px 15px;
+        display: block;
+        position: relative;
+        float:left;
+        background-color: white;
+        padding: 20px;
+        max-width: 300px;
+        font-size: 1.2rem;
+        font-weight: 300;
+        border-radius:3px;
+        box-shadow: 0 2px 10px 0 rgba(0,0,0,.16);
+      }
+      #greeting-card > p:nth-child(3) {
+        font-size: 0.7rem;
+      }
+    </style>
+
+    <paper-button id="load-button" on-click="{{load}}" raised>load greetings</paper-button>
+    <div id="wrapper">
+        <template repeat="{{greeting in greetings}}">
+          <div id="greeting-card">
+            <h2>{{greeting.author}}</h2>
+            <p>{{greeting.content}}</p>
+            <p>{{greeting.date}}</p>
+          </div>
+        </template>
+      </div>
+  </template>
+  <script type="application/dart" src="main_app.dart"></script>
+</polymer-element>
